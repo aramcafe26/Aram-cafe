@@ -15,10 +15,10 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - uses: android-actions/setup-android@v3
-
       - name: Install Android SDK
-        run: sdkmanager "platforms;android-35" "build-tools;35.0.0"
+        run: |
+          yes | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --licenses
+          /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager "platforms;android-35" "build-tools;35.0.0"
 
       - name: Download Gradle
         run: |
@@ -35,4 +35,3 @@ jobs:
         with:
           name: Aram-Cafe-APK
           path: project/app/build/outputs/apk/debug/app-debug.apk
-          
